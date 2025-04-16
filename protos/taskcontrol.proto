@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package aerpaw;
+
+service TaskControlService {
+  rpc DispatchTask (TaskRequest) returns (TaskAck);
+}
+
+message TaskRequest {
+  string task_id = 1;
+  string destination = 2; // "onboard", "edge", "cloud"
+}
+
+message TaskAck {
+  string status = 1; // "success", "failure"
+}

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package aerpaw;
+
+service TelemetryService {
+  rpc GetSignalStrength (Empty) returns (SignalResponse);
+  rpc GetBandwidth (Empty) returns (BandwidthResponse);
+  rpc GetLinkStability (Empty) returns (LinkResponse);
+}
+
+message Empty {}
+
+message SignalResponse {
+  float rssi = 1; // in dBm
+}
+
+message BandwidthResponse {
+  float bandwidth_mbps = 1;
+}
+
+message LinkResponse {
+  float stability_score = 1; // 0.0 - 1.0
+}
